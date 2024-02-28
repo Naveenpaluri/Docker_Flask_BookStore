@@ -1,0 +1,8 @@
+Flask
+flask-sqlalchemy
+PyMySQL
+python-dotenv
+marshmallow
+sqlalchemy
+Werkzeug
+

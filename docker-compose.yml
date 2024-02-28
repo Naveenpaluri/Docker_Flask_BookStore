@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  flask-app:
+    build:
+      context: .    # The path to your Dockerfile and application code
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=development
+      - MYSQL_HOST=mysql
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=mysql
+      - MYSQL_DB=Books
+    networks:
+      - mynetwork
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql
+      MYSQL_DATABASE: Books
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+
